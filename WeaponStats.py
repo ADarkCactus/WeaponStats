@@ -17,9 +17,9 @@ with open("GameData_ArchetypeDataBlock_bin.json") as archetypeDB:
 # Empty weapon map
 weaponMap = {}
 
-# Function to generate chainmap
+# Function to generate map
 def genWeaponMap():
-    """Iterates through datablocks and generates chainmap of {weaponName, archetype}"""
+    """Iterates through datablocks and generates map of {weaponName: archetype}"""
     # Search for possible weapons in PlayerOfflineGearDB
     for weapon in playerOfflineGearDict["Blocks"]:
         components = weapon["GearJSON"]
@@ -64,7 +64,7 @@ def genWeaponMap():
                         updateArchetype(archetypeID)
 
 def updateArchetype(archetypeID):
-    """Takes archetypeid from weaponfind() and prints archetype datablock"""
+    """Takes archetypeid from genWeaponMap() and prints archetype datablock"""
     for archetype in archetypeDict["Blocks"]:
         if archetypeID == archetype["persistentID"]:
             weaponMap.update({weaponName: archetype})
